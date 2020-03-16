@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="fragments/head" />
+<body>
+	<!-- Barra de Navegación superior -->
+	<nav th:replace="fragments/nav" />
+	<div class="container">
+		<h2 th:text="#{post.list.title}"></h2>
+		<form class="navbar-form" action="/post/list">
+			<div class="posts" th:each="post : ${postList}">
+				<h3 th:text="${post.title}"></h3>
+				<h4 th:text="${post.author.name}"></h4>
+				<h5 th:text="${post.date}"></h5>
+				<p th:text="${post.body}"></p>
+			</div>
+		</form>
+	</div>
+	<footer th:replace="fragments/footer" />
+</body>
+</html>

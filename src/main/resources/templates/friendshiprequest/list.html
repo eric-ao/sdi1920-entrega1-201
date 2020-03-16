@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="fragments/head" />
+<body>
+	<!-- Barra de Navegación superior -->
+	<nav th:replace="fragments/nav" />
+	<div class="container">
+		<h2 th:text="#{requests.list.title}"></h2>
+		<div class="table-responsive">
+			<table class="table table-hover" th:fragment="tableFriendshipRequests" id="tableFriendshipRequests">
+				<thead>
+					<tr>
+						<th th:text="#{requests.list.email}"></th>
+						<th th:text="#{requests.list.name}"></th>
+						<th th:text="#{requests.list.surname}"></th>
+						<th class="col-md-1"></th>
+						<th class="col-md-1"></th>
+						<th class="col-md-1"></th>
+						<th class="col-md-1"></th>
+						<th class="col-md-1"></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="request : ${friendshipRequestList}">
+						<td th:text="${request.userFrom.email}"></td>
+						<td th:text="${request.userFrom.name}"></td>
+						<td th:text="${request.userFrom.surname}"></td>
+						<td><a th:href="${'/friendshiprequest/accept/' + request.id}" th:text="#{requests.list.accept}"></a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<footer th:replace="fragments/pagination"/>
+	</div>
+	<footer th:replace="fragments/footer" />
+</body>
+</html>
